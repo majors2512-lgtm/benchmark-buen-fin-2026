@@ -19,13 +19,14 @@ BF.fbPage = async function ({ known = [] } = {}) {
   XMLHttpRequest.prototype.open = function (m, u) { this.__u = u; return oo.apply(this, arguments); };
   XMLHttpRequest.prototype.send = function (b) { if (String(this.__u).includes('graphql')) { const s = this; this.addEventListener('load', () => { try { res.push(s.responseText); } catch (e) {} }); } return os.apply(this, arguments); };
   const scriptsTxt = [...document.querySelectorAll('script[type="application/json"]')].map(s => s.textContent);
-  // Los "Destacados" pueden ser viejos: solo cuentan las fechas que llegan al hacer scroll.
-  const minResp = () => { let m = Infinity; for (const t of res) for (const x of t.matchAll(/"creation_time":(\d+)/g)) m = Math.min(m, +x[1]); return m; };
-  for (let k = 0; k < 25 && (k < 3 || minResp() > BF.SINCE - 2 * 86400); k++) { window.scrollTo(0, document.body.scrollHeight); await BF.sleep(2500); }
+  const parse = txts => { const out = []; txts.forEach(t => t.split('\n').forEach(l => { l = l.trim(); if (l) try { out.push(JSON.parse(l.replace(/^for \(;;\);/, ''))); } catch (e) {} })); return out; };
+  // Scroll hasta que el feed (no los "Destacados") llegue a publicaciones anteriores al 1 de noviembre.
+  const oldest = () => Math.min(Infinity, ...BF.findAll(parse(res), o => o.__typename === 'Story' && o.post_id && o.creation_time).map(s => s.creation_time));
+  for (let k = 0; k < 30; k++) { window.scrollTo(0, document.body.scrollHeight); await BF.sleep(2500); if (k >= 4 && oldest() < BF.SINCE - 86400) break; }
 
   const roots = [];
   scriptsTxt.forEach(t => { try { roots.push(JSON.parse(t)); } catch (e) {} });
-  res.forEach(t => t.split('\n').forEach(l => { l = l.trim(); if (l) try { roots.push(JSON.parse(l.replace(/^for \(;;\);/, ''))); } catch (e) {} }));
+  roots.push(...parse(res));
   const stories = BF.findAll(roots, o => o.__typename === 'Story' && o.post_id && o.creation_time);
   const by = new Map();
   for (const s of stories) {

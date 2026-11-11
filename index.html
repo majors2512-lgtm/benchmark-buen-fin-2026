@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Benchmark Buen Fin 2026 · LG · Hisense · TCL · Whirlpool · Mabe</title>
+<style>
+:root{
+  color-scheme: light;
+  --bg:#f4f4f2; --surface:#fcfcfb; --surface-2:#f0efec; --border:#e2e1dc;
+  --text:#0b0b0b; --text-2:#52514e; --muted:#8a8984; --accent:#0b0b0b;
+  --LG:#2a78d6; --Hisense:#eb6834; --TCL:#1baf7a; --Whirlpool:#eda100; --Mabe:#e87ba4;
+  --seq-0:#f0efec; --seq-1:#d4e4f7; --seq-2:#9cc2ee; --seq-3:#5c9be2; --seq-4:#2a78d6; --seq-5:#174f96;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    color-scheme: dark;
+    --bg:#121211; --surface:#1a1a19; --surface-2:#242422; --border:#33332f;
+    --text:#f0efec; --text-2:#c3c2b7; --muted:#8f8e86; --accent:#f0efec;
+    --LG:#3987e5; --Hisense:#d95926; --TCL:#199e70; --Whirlpool:#c98500; --Mabe:#d55181;
+    --seq-0:#242422; --seq-1:#1e3350; --seq-2:#22497a; --seq-3:#2c63a8; --seq-4:#3987e5; --seq-5:#8dbcf3;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;font:14px/1.45 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text)}
+a{color:inherit}
+.wrap{max-width:1280px;margin:0 auto;padding:24px 20px 60px}
+header h1{font-size:24px;margin:0 0 4px;letter-spacing:-.01em}
+header p{margin:0;color:var(--text-2)}
+.updated{display:inline-flex;gap:6px;align-items:center;margin-top:10px;font-size:12px;color:var(--text-2);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:4px 10px}
+.dot-live{width:8px;height:8px;border-radius:50%;background:#1baf7a}
+.tabs{display:flex;gap:8px;margin:22px 0 14px;flex-wrap:wrap}
+.tab{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:10px 16px;border-radius:10px;font-size:15px;font-weight:600;cursor:pointer}
+.tab small{display:block;font-weight:400;color:var(--text-2);font-size:12px}
+.tab[aria-selected="true"]{background:var(--accent);color:var(--bg);border-color:var(--accent)}
+.tab[aria-selected="true"] small{color:var(--bg);opacity:.8}
+.filters{display:flex;gap:10px;flex-wrap:wrap;align-items:center;background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:10px 12px;margin-bottom:16px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--border);background:var(--surface);color:var(--text);border-radius:999px;padding:5px 11px;cursor:pointer;font-size:13px}
+.chip[aria-pressed="false"]{opacity:.45}
+.sw{width:10px;height:10px;border-radius:3px;display:inline-block}
+select,input[type=search]{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:6px 8px}
+input[type=search]{min-width:180px;flex:1}
+.sep{width:1px;height:24px;background:var(--border)}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:10px;margin-bottom:16px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:12px 14px}
+.kpi .name{display:flex;align-items:center;gap:6px;font-weight:600;color:var(--text-2);font-size:13px}
+.kpi .big{font-size:30px;font-weight:700;letter-spacing:-.02em;margin-top:2px}
+.kpi .sub{color:var(--text-2);font-size:12px}
+.grid2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.4fr);gap:12px;margin-bottom:18px}
+@media (max-width:900px){.grid2{grid-template-columns:1fr}}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px 16px}
+.card h2{font-size:15px;margin:0 0 2px}
+.card .hint{font-size:12px;color:var(--text-2);margin:0 0 12px}
+.bars .row{display:grid;grid-template-columns:90px 1fr 40px;align-items:center;gap:8px;margin:8px 0;font-size:13px}
+.bars .track{height:22px;position:relative}
+.bars .fill{height:100%;border-radius:0 4px 4px 0;min-width:2px}
+.bars .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--text)}
+.bars .lbl{display:flex;align-items:center;gap:6px;color:var(--text-2)}
+table.heat{border-collapse:separate;border-spacing:2px;width:100%;font-size:12px}
+table.heat th{font-weight:600;color:var(--text-2);text-align:left;padding:4px 6px;white-space:nowrap}
+table.heat th.c{text-align:center}
+table.heat td{text-align:center;padding:6px 4px;border-radius:4px;font-variant-numeric:tabular-nums}
+.feedhead{display:flex;justify-content:space-between;align-items:baseline;margin:6px 0 10px}
+.feedhead h2{font-size:17px;margin:0}
+.feed{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.post{background:var(--surface);border:1px solid var(--border);border-radius:12px;overflow:hidden;display:flex;flex-direction:column}
+.post .img{aspect-ratio:4/5;background:var(--surface-2);display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;overflow:hidden;position:relative}
+.post .img img{width:100%;height:100%;object-fit:cover;display:block}
+.post .badge{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.72);color:#fff;font-size:11px;padding:3px 8px;border-radius:999px}
+.post .body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:6px;flex:1}
+.post .who{display:flex;align-items:center;gap:6px;font-weight:600;font-size:13px}
+.post .when{color:var(--text-2);font-size:12px;font-weight:400;margin-left:auto}
+.kw{display:flex;flex-wrap:wrap;gap:4px}
+.kw span{font-size:11px;border:1px solid var(--border);background:var(--surface-2);border-radius:6px;padding:2px 6px}
+.kw span b{font-weight:600;color:var(--text-2);margin-left:3px;font-size:10px}
+.copy{font-size:12.5px;color:var(--text-2);white-space:pre-line;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.copy.open{-webkit-line-clamp:unset}
+.copy mark{background:#fde9a8;color:#0b0b0b;border-radius:2px}
+.actions{display:flex;justify-content:space-between;align-items:center;margin-top:auto;padding-top:4px}
+.more{background:none;border:0;color:var(--text-2);font-size:12px;cursor:pointer;padding:0;text-decoration:underline}
+.go{font-size:12px;font-weight:600;text-decoration:none;border:1px solid var(--border);border-radius:8px;padding:5px 10px}
+.empty{grid-column:1/-1;text-align:center;color:var(--text-2);padding:40px;background:var(--surface);border:1px dashed var(--border);border-radius:12px}
+#tip{position:fixed;pointer-events:none;background:var(--text);color:var(--bg);font-size:12px;padding:6px 8px;border-radius:6px;opacity:0;transition:opacity .1s;z-index:10;max-width:260px}
+footer{margin-top:30px;color:var(--muted);font-size:12px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>Benchmark Buen Fin 2026</h1>
+    <p>LG · Hisense · TCL · Whirlpool · Mabe. Publicaciones en Instagram, Facebook y TikTok que usan las palabras clave en el copy out (descripción) o en el copy in (texto en la imagen).</p>
+    <div class="updated"><span class="dot-live"></span><span id="updated">Cargando…</span></div>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button class="tab" role="tab" data-phase="previo" aria-selected="true">Previo al Buen Fin<small>1 – 12 de noviembre</small></button>
+    <button class="tab" role="tab" data-phase="durante" aria-selected="false">Durante el Buen Fin<small>13 – 17 de noviembre</small></button>
+  </div>
+
+  <div class="filters">
+    <div id="brandChips" style="display:flex;gap:6px;flex-wrap:wrap"></div>
+    <span class="sep"></span>
+    <select id="fPlat" aria-label="Red social"><option value="">Todas las redes</option><option>Instagram</option><option>Facebook</option><option>TikTok</option></select>
+    <select id="fKw" aria-label="Palabra clave"><option value="">Todas las palabras</option></select>
+    <select id="fShow" aria-label="Mostrar"><option value="kw">Solo con palabras clave</option><option value="all">Todas las publicaciones</option></select>
+    <input type="search" id="fQ" placeholder="Buscar en el copy…">
+  </div>
+
+  <div class="kpis" id="kpis"></div>
+
+  <div class="grid2">
+    <div class="card">
+      <h2>Publicaciones con palabras clave por marca</h2>
+      <p class="hint" id="barsHint"></p>
+      <div class="bars" id="bars"></div>
+    </div>
+    <div class="card">
+      <h2>Uso de cada palabra clave por marca</h2>
+      <p class="hint">Número de publicaciones que contienen la palabra (copy in o copy out).</p>
+      <div style="overflow-x:auto"><table class="heat" id="heat"></table></div>
+    </div>
+  </div>
+
+  <div class="feedhead"><h2>Testigos</h2><span class="hint" id="feedCount" style="color:var(--text-2);font-size:13px"></span></div>
+  <div class="feed" id="feed"></div>
+
+  <footer>
+    Horario de la Ciudad de México. Se actualiza aproximadamente cada 2 horas. "out" = palabra en la descripción del post, "in" = palabra en el texto dentro de la imagen (lectura automática de la portada; puede omitir texto en videos).
+    Las miniaturas se guardan como testigo aunque la publicación se borre después.
+  </footer>
+</div>
+<div id="tip"></div>
+
+<script>
+const BRANDS=['LG','Hisense','TCL','Whirlpool','Mabe'];
+const ACCOUNTS={LG:'IG · FB · TikTok',Hisense:'IG · FB · TikTok',TCL:'IG · FB',Whirlpool:'IG · FB',Mabe:'IG'};
+const state={phase:'previo',brands:new Set(BRANDS),plat:'',kw:'',show:'kw',q:''};
+let POSTS=[],META={};
+const $=s=>document.querySelector(s);
+const color=b=>`var(--${b})`;
+const esc=s=>(s||'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const fmtDate=iso=>new Date(iso).toLocaleString('es-MX',{timeZone:'America/Mexico_City',day:'numeric',month:'short',hour:'2-digit',minute:'2-digit'});
+const tip=$('#tip');
+function showTip(e,html){tip.innerHTML=html;tip.style.opacity=1;tip.style.left=Math.min(e.clientX+12,innerWidth-270)+'px';tip.style.top=(e.clientY+12)+'px'}
+function hideTip(){tip.style.opacity=0}
+
+async function load(){
+  const bust='?t='+Date.now();
+  const [p,m]=await Promise.all([fetch('data/posts.json'+bust).then(r=>r.ok?r.json():[]).catch(()=>[]),fetch('data/meta.json'+bust).then(r=>r.ok?r.json():{}).catch(()=>({}))]);
+  POSTS=p;META=m;
+  $('#updated').textContent=META.updated_at?'Última actualización: '+new Date(META.updated_at).toLocaleString('es-MX',{timeZone:'America/Mexico_City',dateStyle:'medium',timeStyle:'short'}):'Sin datos todavía';
+  const kws=META.keywords||[];
+  $('#fKw').innerHTML='<option value="">Todas las palabras</option>'+kws.map(k=>`<option>${esc(k)}</option>`).join('');
+  $('#fKw').value=state.kw;
+  render();
+}
+
+function base(){ // filtros excepto "solo con palabras clave"
+  const q=state.q.toLowerCase();
+  return POSTS.filter(p=>p.phase===state.phase&&state.brands.has(p.brand)&&(!state.plat||p.platform===state.plat)&&(!q||((p.copy_out||'')+' '+(p.copy_in||'')+' '+(p.ocr||'')).toLowerCase().includes(q)));
+}
+const hasKw=p=>state.kw?p.keywords.includes(state.kw):p.keywords.length>0;
+
+function render(){
+  document.querySelectorAll('.tab').forEach(t=>{
+    const ph=t.dataset.phase,n=POSTS.filter(p=>p.phase===ph&&p.keywords.length).length;
+    t.setAttribute('aria-selected',ph===state.phase);
+    t.querySelector('small').textContent=(ph==='previo'?'1 – 12 de noviembre':'13 – 17 de noviembre')+' · '+n+' con palabras clave';
+  });
+  const B=base(), K=B.filter(hasKw);
+  // KPIs
+  $('#kpis').innerHTML=BRANDS.filter(b=>state.brands.has(b)).map(b=>{
+    const all=B.filter(p=>p.brand===b),k=all.filter(hasKw);
+    const pct=all.length?Math.round(100*k.length/all.length):0;
+    return `<div class="kpi"><div class="name"><span class="sw" style="background:${color(b)}"></span>${b}</div><div class="big">${k.length}</div><div class="sub">de ${all.length} publicaciones (${pct}%)<br>${ACCOUNTS[b]}</div></div>`}).join('');
+  // Barras
+  const counts=BRANDS.filter(b=>state.brands.has(b)).map(b=>({b,n:K.filter(p=>p.brand===b).length,byP:['Instagram','Facebook','TikTok'].map(pl=>[pl,K.filter(p=>p.brand===b&&p.platform===pl).length])}));
+  const max=Math.max(1,...counts.map(c=>c.n));
+  $('#barsHint').textContent=state.kw?`Solo la palabra "${state.kw}".`:'Cualquiera de las palabras clave.';
+  $('#bars').innerHTML=counts.map(c=>`<div class="row" data-tip="${esc(`<b>${c.b}</b><br>`+c.byP.map(([pl,n])=>`${pl}: ${n}`).join('<br>'))}"><span class="lbl"><span class="sw" style="background:${color(c.b)}"></span>${c.b}</span><div class="track"><div class="fill" style="width:${100*c.n/max}%;background:${color(c.b)}"></div></div><span class="val">${c.n}</span></div>`).join('');
+  // Heatmap
+  const kws=META.keywords||[], bs=BRANDS.filter(b=>state.brands.has(b));
+  const cell=(k,b)=>B.filter(p=>p.brand===b&&p.keywords.includes(k)).length;
+  const hmax=Math.max(1,...kws.flatMap(k=>bs.map(b=>cell(k,b))));
+  const shade=n=>n===0?'var(--seq-0)':`var(--seq-${Math.min(5,1+Math.floor(4*n/hmax))})`;
+  const ink=n=>n>0&&(1+Math.floor(4*n/hmax))>=3?'#fff':'var(--text)';
+  $('#heat').innerHTML='<tr><th></th>'+bs.map(b=>`<th class="c"><span class="sw" style="background:${color(b)}"></span> ${b}</th>`).join('')+'</tr>'+
+    kws.map(k=>'<tr><th>'+esc(k)+'</th>'+bs.map(b=>{const n=cell(k,b);return `<td style="background:${shade(n)};color:${ink(n)}" data-tip="${esc(`<b>${b}</b> · ${k}<br>${n} publicaciones`)}">${n||'·'}</td>`}).join('')+'</tr>').join('');
+  // Feed
+  const list=state.show==='kw'?K:B;
+  $('#feedCount').textContent=list.length+' publicaciones';
+  $('#feed').innerHTML=list.length?list.map(card).join(''):`<div class="empty">${POSTS.length?'No hay publicaciones con estos filtros en esta etapa.':'Todavía no hay datos. La primera recolección aparecerá aquí.'}</div>`;
+}
+
+function highlight(text,kwList){
+  let h=esc(text);
+  const pats={'Nos adelantamos':'nos adelantamos','Aprovecha':'aprov[eé]ch\\w*','MSI':'\\bMSI\\b','Descuento':'descuento\\b','descuentos':'descuentos','meses':'\\bmeses\\b','noviembre':'noviembre','buen fin':'buen\\s*fin','oferta':'ofertas?','promoción':'promoci[oó]n\\b','promociones':'promociones','aplica':'\\baplica(n|ble|bles)?\\b'};
+  kwList.forEach(k=>{if(pats[k]) h=h.replace(new RegExp('('+pats[k]+')','gi'),'<mark>$1</mark>')});
+  return h;
+}
+
+function card(p){
+  const kws=p.keywords.map(k=>{const w=[p.kw_out.includes(k)?'out':'',p.kw_in.includes(k)?'in':''].filter(Boolean).join('+');return `<span>${esc(k)}<b>${w}</b></span>`}).join('');
+  const img=p.thumb?`<img loading="lazy" src="${p.thumb}" alt="Imagen inicial de la publicación de ${esc(p.brand)}">`:'Sin miniatura';
+  const copyIn=(p.copy_in||p.ocr)?`\n\n[Texto en imagen] ${p.copy_in||''} ${p.ocr||''}`:'';
+  return `<article class="post">
+    <a class="img" href="${p.url}" target="_blank" rel="noopener">${img}<span class="badge">${p.platform} · ${p.format||''}</span></a>
+    <div class="body">
+      <div class="who"><span class="sw" style="background:${color(p.brand)}"></span>${p.brand}<span class="when">${fmtDate(p.date)}</span></div>
+      ${kws?`<div class="kw">${kws}</div>`:''}
+      <div class="copy">${highlight((p.copy_out||'(sin descripción)')+copyIn,p.keywords)}</div>
+      <div class="actions"><button class="more" onclick="this.closest('.body').querySelector('.copy').classList.toggle('open')">Ver copy completo</button><a class="go" href="${p.url}" target="_blank" rel="noopener">Ver publicación ↗</a></div>
+    </div></article>`;
+}
+
+// Controles
+$('#brandChips').innerHTML=BRANDS.map(b=>`<button class="chip" aria-pressed="true" data-b="${b}"><span class="sw" style="background:${color(b)}"></span>${b}</button>`).join('');
+$('#brandChips').addEventListener('click',e=>{const c=e.target.closest('.chip');if(!c)return;const b=c.dataset.b;state.brands.has(b)?state.brands.delete(b):state.brands.add(b);c.setAttribute('aria-pressed',state.brands.has(b));render()});
+document.querySelectorAll('.tab').forEach(t=>t.addEventListener('click',()=>{state.phase=t.dataset.phase;render()}));
+$('#fPlat').onchange=e=>{state.plat=e.target.value;render()};
+$('#fKw').onchange=e=>{state.kw=e.target.value;render()};
+$('#fShow').onchange=e=>{state.show=e.target.value;render()};
+$('#fQ').oninput=e=>{state.q=e.target.value;render()};
+document.addEventListener('mousemove',e=>{const t=e.target.closest('[data-tip]');t?showTip(e,t.dataset.tip):hideTip()});
+// Abre por defecto la pestaña "Durante" cuando ya empezó el Buen Fin
+if(Date.now()>=Date.parse('2026-11-13T06:00:00Z')) state.phase='durante';
+load(); setInterval(load,10*60*1000);
+</script>
+</body>
+</html>

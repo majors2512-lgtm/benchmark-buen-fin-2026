@@ -30,6 +30,8 @@ KEYWORDS = [
     ('promoción', r'\bpromocion\b'),
     ('promociones', r'\bpromociones\b'),
     ('aplica', r'\baplica(n|ble|bles)?\b'),
+    ('costará', r'\bcostara\b'),
+    ('estrenar', r'\bestrenar\b'),
 ]
 PATTERNS = [(k, re.compile(p)) for k, p in KEYWORDS]
 

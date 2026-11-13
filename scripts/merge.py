@@ -32,6 +32,8 @@ KEYWORDS = [
     ('aplica', r'\baplica(n|ble|bles)?\b'),
     ('costará', r'\bcostara\b'),
     ('estrenar', r'\bestrenar\b'),
+    ('precio', r'\bprecios?\b'),
+    ('regalo', r'\bregalos?\b'),
 ]
 PATTERNS = [(k, re.compile(p)) for k, p in KEYWORDS]
 
